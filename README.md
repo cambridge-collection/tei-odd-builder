@@ -95,7 +95,7 @@ Your document should now validate against the version contained within GitHub. T
 
 Your documentation will be available online if you deploy the repository to your GitHub Pages site. You can find out the URL to your site by going to **Settings** and selecting **Pages**. Once you know your site's domain name, you just have to append `/documentation/<ODD_BASENAME>.html` to view your documentation.
 
-The styling of the CSS files are the base ones used by TEI (URL). They don't look overly pretty on GitHub pages, but it is at least broadly functional.
+The styling of the CSS files are the base ones used by TEI (https://github.com/TEIC/Stylesheets/tree/dev/css). They don't look overly pretty on GitHub pages, but it is at least broadly functional.
 
 ## Future Improvements
 
