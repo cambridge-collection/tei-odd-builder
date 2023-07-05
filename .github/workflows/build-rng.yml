@@ -31,6 +31,7 @@ jobs:
             java -DentityExpansionLimit=9000000 -jar $GITHUB_WORKSPACE/saxon-he-12.1.jar -xi:on -o:$GITHUB_WORKSPACE/full.odd "${odd_name}" $GITHUB_WORKSPACE/tei/odds/odd2odd.xsl
             java -DentityExpansionLimit=9000000 -jar $GITHUB_WORKSPACE/saxon-he-12.1.jar -xi:on -o:../documentation/${rng_name}.html "$GITHUB_WORKSPACE/full.odd" $GITHUB_WORKSPACE/tei/odds/odd2html.xsl cssFile='css/tei.css' cssPrintFile='css/tei-print.css'
           done;
+          ${GITHUB_WORKSPACE}/main/.github/scripts/create_index.sh >${GITHUB_WORKSPACE}/main/index.html
           IFS="$OIFS"
           git config --global user.name 'ODD Bot'
           git config --global user.email '<>'
