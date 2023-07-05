@@ -99,5 +99,4 @@ The styling of the CSS files are the base ones used by TEI (https://github.com/T
 
 ## Future Improvements
 
-- Create dynamic homepage (index.html) that includes links to each schema file and it's documentation so you don’t need to try to figure it out for yourself.
 - Improve CSS display
