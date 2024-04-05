@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: main
       - name: Checkout TEI Stylesheets
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: TEIC/Stylesheets
           path: ./tei
@@ -26,14 +26,19 @@ jobs:
           OIFS="$IFS"
           IFS=$'\n'
           for odd_name in *.odd; do
-            rng_name="$(echo "$odd_name"| sed -E 's#\.[^.]*$##g')";
-            $GITHUB_WORKSPACE/tei/bin/teitorelaxng "${odd_name}" "../rng/${rng_name}.rng";
-            java -DentityExpansionLimit=9000000 -jar $GITHUB_WORKSPACE/saxon-he-12.1.jar -xi:on -o:$GITHUB_WORKSPACE/full.odd "${odd_name}" $GITHUB_WORKSPACE/tei/odds/odd2odd.xsl
-            java -DentityExpansionLimit=9000000 -jar $GITHUB_WORKSPACE/saxon-he-12.1.jar -xi:on -o:../documentation/${rng_name}.html "$GITHUB_WORKSPACE/full.odd" $GITHUB_WORKSPACE/tei/odds/odd2html.xsl cssFile='css/tei.css' cssPrintFile='css/tei-print.css'
+            base_name="$(echo "$odd_name"| sed -E 's#\.[^.]*$##g')";
+            # Expand versioning variables
+            java -DentityExpansionLimit=9000000 -jar $GITHUB_WORKSPACE/saxon-he-12.1.jar -xi:on -o:$GITHUB_WORKSPACE/${base_name}-expanded.odd -s:"${odd_name}" -xsl:${GITHUB_WORKSPACE}/main/.github/xslt/expandVars.xsl GITHUB_REF_NAME="${{ github.ref.name }}" GITHUB_SHA="${{ github.sha }}" DATE_STR=$(git log -1 --format=%cd --date=format:"%-d %B %Y")
+            # Create FULL ODD
+            java -DentityExpansionLimit=9000000 -jar $GITHUB_WORKSPACE/saxon-he-12.1.jar -xi:on -o:$GITHUB_WORKSPACE/${base_name}-full.odd "$GITHUB_WORKSPACE/${base_name}-expanded.odd" $GITHUB_WORKSPACE/tei/odds/odd2odd.xsl
+            # Create RNG
+            $GITHUB_WORKSPACE/tei/bin/teitorng "$GITHUB_WORKSPACE/${base_name}-full.odd" "../rng/${base_name}.rng";
+            # Create HTML
+            java -DentityExpansionLimit=9000000 -jar $GITHUB_WORKSPACE/saxon-he-12.1.jar -xi:on -o:../documentation/${base_name}.html "$GITHUB_WORKSPACE/${base_name}-full.odd" $GITHUB_WORKSPACE/tei/odds/odd2html.xsl cssFile='css/tei.css' cssPrintFile='css/tei-print.css'
           done;
           ${GITHUB_WORKSPACE}/main/.github/scripts/create_index.sh >${GITHUB_WORKSPACE}/main/index.html
           IFS="$OIFS"
           git config --global user.name 'ODD Bot'
           git config --global user.email '<>'
           git add ../rng/*.rng ../documentation/*.html
-          git diff-index --quiet HEAD || (git commit -am "Workflow: Generate RelaxNG schemata and documentation" && git push)
+          git diff-index --quiet HEAD || (git commit -am "chore(build): generate rng and documentation" && git push)
