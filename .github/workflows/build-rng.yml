@@ -2,7 +2,7 @@ name: Build Schemata and Documentation
 on:
   push:
     branches:
-      - test
+      - main
       
   workflow_dispatch:
 jobs:
