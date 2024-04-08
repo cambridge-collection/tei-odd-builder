@@ -2,7 +2,7 @@ name: Build Schemata and Documentation
 on:
   push:
     branches:
-      - epsilon
+      - dev*
       
   workflow_dispatch:
 jobs:
