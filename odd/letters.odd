@@ -366,8 +366,7 @@
                </exemplum>
             </elementSpec>
             
-            <elementSpec module="header" ident="editorialDecl" mode="change">
-               
+            <elementSpec module="header" ident="editorialDecl" mode="change">              
                <classes mode="change">
                   <memberOf key="att.declarable" mode="delete"/>
                   <memberOf key="att.global" mode="delete"/>
@@ -440,7 +439,6 @@
             </elementSpec>
 
             <elementSpec module="header" ident="idno" mode="change">
-               
                <classes mode="change">
                   <memberOf key="att.datable" mode="delete"/>
                   <memberOf key="att.global" mode="delete"/>
@@ -706,7 +704,6 @@
 
             <elementSpec module="core" ident="analytic" mode="change">
                <!--FIX: Remove after biblStruct gone-->
-               
                <classes mode="change">
                   <memberOf key="att.global" mode="delete"/>
                </classes>
@@ -717,7 +714,6 @@
 
             <elementSpec module="core" ident="author" mode="change">
                <!--FIX: Remove after biblStruct gone-->
-               
                <classes mode="change">
                   <memberOf key="att.datable" mode="delete"/>
                </classes>
@@ -922,7 +918,6 @@
 
             <elementSpec module="core" ident="biblStruct" mode="change">
                <!--FIX: Remove after biblStruct gone-->
-               
                <classes mode="change">
                   <memberOf key="att.declarable" mode="delete"/>
                   <memberOf key="att.docStatus" mode="delete"/>
@@ -1747,7 +1742,6 @@
 
             <elementSpec module="core" ident="lg" mode="change">
                <!--DROP?-->
-               
                <classes mode="change">
                   <memberOf key="att.declaring" mode="delete"/>
                   <memberOf key="att.divLike" mode="delete"/>
@@ -1866,7 +1860,6 @@
 
             <elementSpec module="core" ident="monogr" mode="change">
                <!--FIX: Remove after biblStruct gone-->
-               
                <classes mode="change">
                   <memberOf key="att.global" mode="delete"/>
                </classes>
@@ -2188,7 +2181,6 @@
             </elementSpec>
 
             <elementSpec ident="quote" module="core" mode="change">
-               
                <classes mode="change">
                   <memberOf key="att.msExcerpt" mode="delete"/>
                   <memberOf key="att.notated" mode="delete"/>
@@ -2234,7 +2226,6 @@
             </elementSpec>
 
             <elementSpec ident="ref" module="core" mode="change">
-               
                <classes mode="change">
                   <memberOf key="att.cReferencing" mode="delete"/>
                   <memberOf key="att.declaring" mode="delete"/>
@@ -2945,7 +2936,6 @@
             </elementSpec>
 
             <elementSpec module="textstructure" ident="text" mode="change">
-               
                <classes mode="change">
                   <memberOf key="att.written" mode="delete"/>
                </classes>
@@ -3498,7 +3488,6 @@
 
             <elementSpec module="namesdates" ident="forename" mode="change">
                <!--FIX: Remove after biblStruct gone-->
-               
                <classes mode="change">
                   <memberOf key="att.global" mode="delete"/>
                   <memberOf key="att.typed" mode="delete"/>
@@ -3639,7 +3628,6 @@
             </elementSpec>
 
             <elementSpec module="namesdates" ident="placeName" mode="change">
-               
                <classes mode="change">
                   <memberOf key="att.datable" mode="delete"/>
                   <memberOf key="att.editLike" mode="delete"/>
