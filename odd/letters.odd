@@ -384,6 +384,7 @@
                      </egXML>
                   </exemplum>
                   <remarks xml:lang="en" versionDate="2022-10-11">
+<p>A declaration of editorial principles and practices that is visible to the reader.</p>
                      <p><hi rend="bold">NB:</hi> The contents of this tag appear underneath the letter transcription in Epsilon.</p>
                   </remarks>
                </elementSpec>
@@ -502,6 +503,7 @@
                      </egXML>
                   </exemplum>
                   <remarks xml:lang="en" versionDate="2022-07-05">
+<p>Currently this field is used to record additional versions of a letter - copies, or alternate publications.</p>
                      <p><hi rend="bold">NB:</hi> <gi>relatedItem</gi> can continue to be used but there's a possibility that its contents might be migrated into a more semantically appropriate place within the header.</p>
                   </remarks>
                </elementSpec>
@@ -549,6 +551,10 @@
                         </publicationStmt>
                      </egXML>
                   </exemplum>
+<remarks xml:lang="en" versionDate="2022-07-05">
+<p>Information on the publication of the text, whether on Epsilon or elsewhere.</p>
+                     
+                  </remarks>
                </elementSpec>
                
                <elementSpec module="header" ident="revisionDesc" mode="change">
@@ -584,6 +590,9 @@
                         </seriesStmt>
                      </egXML>
                   </exemplum>
+<remarks xml:lang="en" versionDate="2022-07-05">
+<p>If the edition the letter is part of forms a series, record information here about the series and the letter's place in it.</p>
+</remarks>
                </elementSpec>
                
                <elementSpec module="header" ident="sourceDesc" mode="change">
